@@ -1,6 +1,12 @@
 body{
-    margin : auto;
+    margin: 0 auto;
     max-width: 1440px;
+}
+
+.shop{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
 }
 
 .produit{
@@ -8,9 +14,10 @@ body{
     align-items: center;
     text-align: center;
     justify-content: center;
-    margin-top: 5rem;
-    padding: 4rem;
-    border-bottom: 2px solid black;
+    margin: 5rem 0;
+    padding: 1rem;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
 }
 
 .titre-produit{
