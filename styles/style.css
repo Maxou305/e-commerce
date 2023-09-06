@@ -4,14 +4,13 @@ body{
 }
 
 .produit{
-    margin-top: 7rem;
-    background-color: aliceblue;
     display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
     align-items: center;
-    padding: 2rem;
+    text-align: center;
+    justify-content: center;
+    margin-top: 5rem;
+    padding: 4rem;
+    border-bottom: 2px solid black;
 }
 
 .titre-produit{
@@ -20,17 +19,14 @@ body{
 }
 
 .prix-ttc {
-    font-size: 2rem;
-    color: red;
-}
-
-.prix-ht {
-    font-size: 2rem;
+    font-size: 1rem;
     color: lightcoral;
+    text-decoration: line-through;
 }
 
 img {
     width: 30%;
+    margin-right: 2rem;
 }
 
 footer{
@@ -38,21 +34,33 @@ footer{
 }
 
 .ristourne{
-    font-size: 2rem;
+    font-size: 1rem;
     color: orange;
 }
 
 .poids{
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: green;
 }
 
 .prix-ristourne-ttc {
-    font-size: 2.7rem;
+    font-size: 1rem;
     color: red;
+    background-color: yellow;
 }
 
-.prix-ristourne-ht {
-    font-size: 2.5rem;
-    color: lightcoral;
+.produit h2{
+    font-size: 2rem;
+    color: blue;
+    margin-bottom: 2rem;
+}
+
+.cta {
+    text-decoration: none;
+    display: block;
+    border: solid blue 1px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    padding: 1rem;
+    margin-top: 2rem;
 }

@@ -40,15 +40,26 @@
 ?>
 <?php foreach ($products as $produit) : ?>
     <div class="produit">
-        <h2 class="titre-produit"><?php echo $produit['nom'] ?></h2>
-        <p>description produit</p>
-        <img src="<?php echo $produit['photo'] ?>" alt="">
-        <p class="poids">Poids : <?php echo $produit['poids'] ?> kg</p>
-        <p class="prix-ttc">Prix TTC : <?php formatPrice($produit['prix']) ?></p>
-        <p class="prix-ht">Prix HT : <?php formatPrice(priceExcludingVAT($produit['prix'])) ?></p>
-        <p class="ristourne">RISTOURNE : <?php echo $produit['ristourne'] ?><?php if ($produit['ristourne'] == null) echo "0" ?> %</p>
-        <p class="prix-ristourne-ttc">Prix TTC après ristourne : <?php formatPrice(discountedPrice($produit['prix'], $produit['ristourne'])) ?></p>
-        <p class="prix-ristourne-ht">Prix HT après ristourne: <?php formatPrice(priceExcludingVAT(discountedPrice($produit['prix'], $produit['ristourne']))) ?></p>
+        <img src="<?php echo $produit['photo']?>" alt="">
+        <div>
+            <h2><?php echo $produit['nom']?></h2>
+            <p>description produit</p>
+            <p class="poids">Poids : <?php echo $produit['poids'] ?> kg</p>
+            <p class="prix-ttc">Prix TTC : <?php formatPrice($produit['prix']) ?></p>
+            <p class="ristourne">RISTOURNE : <?php echo $produit['ristourne'] ?><?php if ($produit['ristourne'] == null) echo "0" ?> %</p>
+            <p class="prix-ristourne-ttc">Prix TTC après ristourne : <?php formatPrice(discountedPrice($produit['prix'], $produit['ristourne'])) ?></p>
+            <label for="quantite">Quantité :</label>
+            <select name="nombre" id="quantite">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        <a class="cta" href="">Commander</a>
+        </div>
+    </div>
+        
     </div>
 <?php endforeach;
 
