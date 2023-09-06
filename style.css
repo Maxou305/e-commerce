@@ -1,0 +1,57 @@
+body{
+    margin : auto;
+}
+
+.produit{
+    margin-top: 7rem;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.titre-produit{
+    color: blue;
+    font-size: 3.5rem;
+}
+
+.prix-ttc {
+    font-size: 2rem;
+    color: red;
+}
+
+.prix-ht {
+    font-size: 2rem;
+    color: lightcoral;
+}
+
+img {
+    width: 50%;
+}
+
+footer{
+    max-width: none;
+}
+
+.ristourne{
+    font-size: 2rem;
+    color: orange;
+}
+
+.poids{
+    font-size: 1.5rem;
+    color: green;
+}
+
+.prix-ristourne-ttc {
+    font-size: 2.7rem;
+    color: red;
+}
+
+.prix-ristourne-ht {
+    font-size: 2.5rem;
+    color: lightcoral;
+}
