@@ -1,12 +1,10 @@
-body{
-    margin: 0 auto;
-    max-width: 1440px;
-}
-
 .shop{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
+    margin: auto;
+    max-width: 1440px;
+    padding: 5rem 0;
 }
 
 .produit{
@@ -14,8 +12,7 @@ body{
     align-items: center;
     text-align: center;
     justify-content: center;
-    margin: 5rem 0;
-    padding: 1rem;
+    padding: 1rem 0;
     border: 1px solid lightgrey;
     border-radius: 5px;
 }
@@ -31,7 +28,7 @@ body{
     text-decoration: line-through;
 }
 
-img {
+.produit img {
     width: 30%;
     margin-right: 2rem;
 }
@@ -64,10 +61,25 @@ footer{
 
 .cta {
     text-decoration: none;
-    display: block;
     border: solid blue 1px;
     background-color: aliceblue;
     border-radius: 20px;
-    padding: 1rem;
-    margin-top: 2rem;
+    padding: 0.7rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.select{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.azerty{
+    margin-top: 5rem;
 }
