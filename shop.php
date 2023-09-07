@@ -1,50 +1,10 @@
 <?php
+    include ('fonctions/my-functions.php');
     include('templates/header.php');
-    $products = [
-        [
-            "id" => 1,
-            "nom" => "Vélo",
-            "prix" => 1500,
-            "poids" => 5.5,
-            "ristourne" => 10,
-            "photo" => "images/velo.jpg",
-        ],
-        [
-            "id" => 2,
-            "nom" => "Trottinette",
-            "prix" => 300,
-            "poids" => 2.5,
-            "ristourne" => null,
-            "photo" => "images/trottinette.jpg"
-        ],
-        [
-            "id" => 3,
-            "nom" => "Scooter",
-            "prix" => 3000,
-            "poids" => 50,
-            "ristourne" => 10,
-            "photo" => "images/scooter.jpg"
-        ],
-        [
-            "id" => 4,
-            "nom" => "Draisienne",
-            "prix" => 35,
-            "poids" => 1,
-            "ristourne" => null,
-            "photo" => "images/draisienne.jpg"
-        ],
-        [
-            "id" => 5,
-            "nom" => "Moto",
-            "prix" => 15000,
-            "poids" => 150,
-            "ristourne" => 5,
-            "photo" => "images/moto.jpg",
-        ],
-    ];
+
 ?>
 <div class="shop">
-    <?php foreach ($products as $produit) : ?>
+    <?php foreach (getProducts() as $produit) : ?>
         <div class="produit">
             <img src="<?php echo $produit['photo']?>" alt="">
             <div>
@@ -65,7 +25,8 @@
                             <option value="5">5</option>
                         </select>
                     </div>
-                    <input type="hidden" name="id" value="<?php echo $produit['id']?>">
+                    <input type="hidden" name="prix-unitaire-panier" value="<?php echo $produit['prix']?>">
+                    <input type="hidden" name="id-panier" value="<?php echo $produit['id']?>">
                     <button class="cta">Commander</button>
                 </form>
             </div>

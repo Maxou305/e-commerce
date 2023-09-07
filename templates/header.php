@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <?php include('fonctions/my-functions.php');?>
     <header class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">Vente de trucs</a>

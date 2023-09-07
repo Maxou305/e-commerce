@@ -83,3 +83,18 @@ form {
 .azerty{
     margin-top: 5rem;
 }
+
+.box-tableau{
+    margin: 0 auto;
+    width: 40%;
+    padding: 3rem 0;
+}
+
+th, td {
+    background-color: lightblue;
+}
+
+.tableau{
+    box-sizing: content-box;
+    border: solid 1px black;
+}
