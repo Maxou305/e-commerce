@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
-    margin: auto;
+    margin: 0 auto;
     max-width: 1440px;
     padding: 5rem 0;
 }
@@ -67,6 +67,15 @@ footer{
     padding: 0.7rem;
 }
 
+.cta-panier {
+    text-decoration: none;
+    border: solid blue 1px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    padding: 0.7rem;
+    width: 100%;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -87,14 +96,23 @@ form {
 .box-tableau{
     margin: 0 auto;
     width: 40%;
-    padding: 3rem 0;
+    padding: 7rem 0 3rem 0;
 }
 
 th, td {
     background-color: lightblue;
+    padding: 1rem 2rem;
+    text-align: center;
 }
+
+
 
 .tableau{
     box-sizing: content-box;
     border: solid 1px black;
+    margin: 0 auto;
+}
+
+.cellule-total{
+    font-weight: bold;
 }

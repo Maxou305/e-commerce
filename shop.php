@@ -3,6 +3,7 @@
     include('templates/header.php');
 
 ?>
+
 <div class="shop">
     <?php foreach (getProducts() as $produit) : ?>
         <div class="produit">
@@ -10,7 +11,7 @@
             <div>
                 <h2><?php echo $produit['nom']?></h2>
                 <p>description produit</p>
-                <p class="poids">Poids : <?php echo $produit['poids'] ?> kg</p>
+                <p class="poids">Poids : <?php echo $produit['poids'] ?> g</p>
                 <p class="prix-ttc">Prix TTC : <?php formatPrice($produit['prix']) ?></p>
                 <p class="ristourne">RISTOURNE : <?php echo $produit['ristourne'] ?><?php if ($produit['ristourne'] == null) echo "0" ?> %</p>
                 <p class="prix-ristourne-ttc">Prix TTC après ristourne : <?php formatPrice(discountedPrice($produit['prix'], $produit['ristourne'])) ?></p>
@@ -25,7 +26,6 @@
                             <option value="5">5</option>
                         </select>
                     </div>
-                    <input type="hidden" name="prix-unitaire-panier" value="<?php echo $produit['prix']?>">
                     <input type="hidden" name="id-panier" value="<?php echo $produit['id']?>">
                     <button class="cta">Commander</button>
                 </form>
