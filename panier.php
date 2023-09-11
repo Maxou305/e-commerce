@@ -1,28 +1,32 @@
 <?php
 include('fonctions/my-functions.php');
+include('templates/header.php');
 
 // // Traitement de formulaire 
-$product_id  = (int) $_POST['id-panier'];
-$produit_panier = getProduct($product_id);
-$quantite = (int)$_POST["quantite"];
-$prix = $produit_panier['prix'];
-$ristourne = $produit_panier['ristourne'];
-$prix_ristourne = discountedPrice($prix, $ristourne);
-$nom = $produit_panier['nom'];
+if (isset($_POST['id-panier'])){
+    $product_id  = (int) $_POST['id-panier'];
+    $produit_panier = getProduct($product_id);
+    $quantite = (int)$_POST["quantite"];
+    $prix = $produit_panier['prix'];
+    $ristourne = $produit_panier['ristourne'];
+    $prix_ristourne = discountedPrice($prix, $ristourne);
+    $nom = $produit_panier['nom'];
+    ajoutPanier($nom, $quantite, $prix_ristourne, $produit_panier);
+}
+
+$cart = getPanier();
 
 if (isset($_POST['transporteur'])){
     $transporteur_id = (int)$_POST['transporteur'];
     $choix_transporteur = $liste_transporteur[$transporteur_id];
-    $frais_port = (int) calculFraisPort($produit_panier, $choix_transporteur, $quantite);
+    $frais_port = (int) calculFraisPort($cart, $choix_transporteur);
 } else {
     $frais_port = 0;
 }
 
-$total = calculTotal($prix_ristourne, $quantite, $frais_port);
+$total = calculPrixTotal($cart, $frais_port);
 $totalHT = priceExcludingVAT($total);
 $tva = $total - $totalHT;
-
-include('templates/header.php');
 ?>
 
 
@@ -43,12 +47,22 @@ include('templates/header.php');
             </th>
         </thead>
         <tbody>
-            <tr>
-                <td><?php echo $nom ?></td>
-                <td><?php echo formatPrice($prix_ristourne) ?></td>
-                <td><?php echo $quantite ?></td>
-                <td><?php echo formatPrice($total) ?></td>
-            </tr>
+            <?php foreach ($cart as $cartItem) :?>
+                <tr>
+                    <td>
+                        <?php echo $cartItem["nom"];?>
+                    </td>                    
+                    <td>
+                        <?php echo formatPrice($cartItem["prix_ristourne"]) ?>
+                    </td>
+                    <td>
+                        <?php echo $cartItem["quantite"] ?>
+                    </td>
+                    <td>
+                        <?php echo formatPrice($cartItem["prix_ristourne"] * $cartItem["quantite"]) ?>
+                    </td>
+                </tr>
+            <?endforeach?>
             <tr>
                 <td> </td>
                 <td> </td>
@@ -66,12 +80,10 @@ include('templates/header.php');
                     <label for="transport">Choix du transporteur :</label>
                 </td>
                 <form action="panier.php" method="POST">
-                    <input type="hidden" name="id-panier" id="id-panier" value="<?php echo $_POST['id-panier'] ?>"/>
-                    <input type="hidden" name="quantite" id="quantite" value="<?php echo $_POST['quantite'] ?>" />
                     <td>
                         <select name="transporteur" id="transporteur">
                             <option value="" selected>---</option>
-                            <option value="0">La Poste</option>
+                            <option value="0">MassimO Inc.</option>
                             <option value="1">Soumeya Presto</option>
                         </select>
                     </td>
@@ -84,7 +96,7 @@ include('templates/header.php');
                 <td> </td>
                 <td> </td>
                 <td>Transport</td>
-                <td><?php echo $frais_port ?></td>
+                <td><?php echo formatPrice($frais_port) ?></td>
             </tr>
             <tr>
                 <td> </td>

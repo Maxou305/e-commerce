@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -11,22 +12,19 @@
 </head>
 
 <body>
-    <!-- <header class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+    <header class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Vente de trucs</a>
+            <a class="navbar-brand" href="shop.php">Vente de trucs</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Accueil</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">A propos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
+                        <a class="nav-link" href="panier.php">Panier</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
@@ -34,4 +32,4 @@
                 </ul>
             </div>
         </div>
-    </header> -->
+    </header>

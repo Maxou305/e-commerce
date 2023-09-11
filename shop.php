@@ -19,6 +19,7 @@
                     <div class="select">
                         <label for="quantite">Quantité :</label>
                         <select name="quantite" id="quantite">
+                            <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -26,8 +27,8 @@
                             <option value="5">5</option>
                         </select>
                     </div>
-                    <input type="hidden" name="id-panier" value="<?php echo $produit['id']?>">
                     <button class="cta">Commander</button>
+                    <input type="hidden" name="id-panier" value="<?php echo $produit['id']?>">
                 </form>
             </div>
         </div>
