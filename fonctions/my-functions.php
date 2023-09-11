@@ -37,6 +37,21 @@ function calculPoidsTotal($cart)
     }
     return $total;
 }
+$liste_transporteur =
+    [
+        "0" => [
+            "id" => 1,
+            "leger" => 3,
+            "moyen" => 6,
+            "lourd" => 1000,
+        ],
+        "1" => [
+            "id" => 2,
+            "leger" => 5,
+            "moyen" => 10,
+            "lourd" => 5692,
+        ],
+    ];
 function calculFraisPort($cart, $choix_transporteur)
 {
     calculPoidsTotal($cart);
@@ -105,48 +120,11 @@ function getProduct($id)
     }
 }
 
-function getTransporteur($transporteur_id)
-{
-    return
-        [
-            [
-                "id" => 1,
-                "0-500" => 3,
-                "500-2000" => 6,
-                "2000" => 1000,
-            ],
-            [
-                "id" => 2,
-                "0-500" => 5,
-                "500-2000" => 10,
-                "2000" => 5692,
-            ],
-        ];
-}
-$liste_transporteur =
-    [
-        "0" => [
-            "id" => 1,
-            "leger" => 3,
-            "moyen" => 6,
-            "lourd" => 1000,
-        ],
-        "1" => [
-            "id" => 2,
-            "leger" => 5,
-            "moyen" => 10,
-            "lourd" => 5692,
-        ],
-    ];
-
 function ajoutPanier($nom, $quantite, $prix_ristourne, $produit_panier)
 {
     $cart = getPanier();
-   
     array_push($cart, ["nom" => $nom, "quantite" => $quantite, "poids" => $produit_panier["poids"], "prix_ristourne" => $prix_ristourne]);
     $_SESSION["cart"] = $cart;
-    var_dump($cart);
-    var_dump($_SESSION);
 }
 
 function getPanier() {
@@ -155,4 +133,9 @@ function getPanier() {
     } else {
         return [];
     }
+}
+
+function emptyCart(){
+    session_destroy();
+    echo "Panier vidé !!";
 }

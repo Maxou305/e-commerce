@@ -105,8 +105,6 @@ th, td {
     text-align: center;
 }
 
-
-
 .tableau{
     box-sizing: content-box;
     border: solid 1px black;
@@ -115,4 +113,10 @@ th, td {
 
 .cellule-total{
     font-weight: bold;
+}
+
+.vide-panier{
+    width: 20%;
+    margin: auto;
+    margin-bottom: 3rem;
 }

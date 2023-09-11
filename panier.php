@@ -27,8 +27,11 @@ if (isset($_POST['transporteur'])){
 $total = calculPrixTotal($cart, $frais_port);
 $totalHT = priceExcludingVAT($total);
 $tva = $total - $totalHT;
-?>
 
+if (isset($_POST["vide-panier"])){
+    emptyCart();
+}
+?>
 
 <div class="box-tableau">
     <table class="tableau">
@@ -107,7 +110,9 @@ $tva = $total - $totalHT;
         </tbody>
     </table>
 </div>
-
+<form action="" method="POST">
+    <input class="vide-panier" type="submit" name="vide-panier" value="Vider le panier">
+</form>
 
 
 <?php include('templates/footer.php'); ?>
