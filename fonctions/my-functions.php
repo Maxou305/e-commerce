@@ -127,6 +127,30 @@ function ajoutPanier($nom, $quantite, $prix_ristourne, $produit_panier)
     $_SESSION["cart"] = $cart;
 }
 
+function checkPanier($nom, $quantite,  $prix_ristourne, $produit_panier)
+{
+    $cart = getPanier();
+    $newCart = [];
+    $isUpdate = false;
+    foreach ($cart as $cartProduct){
+        if ($nom === $cartProduct["nom"]) {
+            $isUpdate = true;
+            $cartProduct["quantite"] += $quantite;
+        }
+        $newCart[] = $cartProduct;
+    }
+    if ($isUpdate) {
+        // $_SESSION["cart"] = count($newCart) > 0 ? $newCart : $cart;
+        if(count($newCart) > 0) {
+            $_SESSION["cart"] = $newCart;
+        } else {
+            $_SESSION["cart"] = $cart;
+        }
+    } else {
+        ajoutPanier($nom, $quantite,  $prix_ristourne, $produit_panier);
+    }
+}
+
 function getPanier() {
     if (isset($_SESSION["cart"])){
         return $_SESSION["cart"];
@@ -137,5 +161,4 @@ function getPanier() {
 
 function emptyCart(){
     session_destroy();
-    echo "Panier vidé !!";
 }

@@ -11,7 +11,7 @@ if (isset($_POST['id-panier'])){
     $ristourne = $produit_panier['ristourne'];
     $prix_ristourne = discountedPrice($prix, $ristourne);
     $nom = $produit_panier['nom'];
-    ajoutPanier($nom, $quantite, $prix_ristourne, $produit_panier);
+    checkPanier($nom, $quantite, $prix_ristourne, $produit_panier);
 }
 
 $cart = getPanier();
@@ -96,7 +96,7 @@ if (isset($_POST["vide-panier"])){
                 </form>
             </tr>
             <tr>
-                <td> </td>
+                <td> <?php var_dump($cart) ?> </td>
                 <td> </td>
                 <td>Transport</td>
                 <td><?php echo formatPrice($frais_port) ?></td>
