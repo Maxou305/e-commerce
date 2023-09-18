@@ -147,7 +147,7 @@ function checkPanier($nom, $quantite,  $prix_ristourne, $produit_panier)
             $_SESSION["cart"] = $cart;
         }
     } else {
-        ajoutPanier($nom, $quantite,  $prix_ristourne, $produit_panier);
+        ajoutPanier($nom, $quantite, $prix_ristourne, $produit_panier);
     }
 }
 

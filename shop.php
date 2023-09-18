@@ -1,15 +1,15 @@
 <?php
-    include ('fonctions/my-functions.php');
-    include('templates/header.php');
+include('fonctions/my-functions.php');
+include('templates/header.php');
 
 ?>
 
 <div class="shop">
     <?php foreach (getProducts() as $produit) : ?>
         <div class="produit">
-            <img src="<?php echo $produit['photo']?>" alt="">
+            <img src="<?php echo $produit['photo'] ?>" alt="">
             <div>
-                <h2><?php echo $produit['nom']?></h2>
+                <h2><?php echo $produit['nom'] ?></h2>
                 <p>description produit</p>
                 <p class="poids">Poids : <?php echo $produit['poids'] ?> g</p>
                 <p class="prix-ttc">Prix TTC : <?php formatPrice($produit['prix']) ?></p>
@@ -27,11 +27,11 @@
                             <option value="5">5</option>
                         </select>
                     </div>
+                    <input type="hidden" name="id-panier" value="<?php echo $produit['id'] ?>">
                     <button class="cta">Commander</button>
-                    <input type="hidden" name="id-panier" value="<?php echo $produit['id']?>">
                 </form>
             </div>
         </div>
-    <?php endforeach;?>
+    <?php endforeach; ?>
 </div>
-<?php include('templates/footer.php');?>
+<?php include('templates/footer.php'); ?>
