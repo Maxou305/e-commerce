@@ -68,4 +68,3 @@ function delProduct($mysqlConnection, $sup){
     echo "<p> Produit supprimé !</p>";
 }
 ?>
-

@@ -2,19 +2,33 @@
 include('fonctions/my-functions.php');
 include('templates/header.php');
 
+try{
+    $mysqlConnection = new PDO(
+    'mysql:host=localhost;
+    dbname=ma_table;
+    charset=utf8',
+    'lpzkjdoi',
+    'Mc110692'
+    );
+}
+catch (Exception $e){
+    die('Erreur : ' . $e->getMessage());
+}
+
 ?>
 
 <div class="shop">
-    <?php foreach (getProducts() as $produit) : ?>
+    <?php 
+    foreach (getProducts($mysqlConnection) as $produit) : ?>
         <div class="produit">
-            <img src="<?php echo $produit['photo'] ?>" alt="">
+            <img src="<?php echo $produit['image'] ?>" alt="">
             <div>
-                <h2><?php echo $produit['nom'] ?></h2>
-                <p>description produit</p>
-                <p class="poids">Poids : <?php echo $produit['poids'] ?> g</p>
-                <p class="prix-ttc">Prix TTC : <?php formatPrice($produit['prix']) ?></p>
-                <p class="ristourne">RISTOURNE : <?php echo $produit['ristourne'] ?><?php if ($produit['ristourne'] == null) echo "0" ?> %</p>
-                <p class="prix-ristourne-ttc">Prix TTC après ristourne : <?php formatPrice(discountedPrice($produit['prix'], $produit['ristourne'])) ?></p>
+                <h2><?php echo $produit['name'] ?></h2>
+                <p><?php echo $produit['description'] ?></p>
+                <p class="poids">Poids : <?php echo $produit['weight'] ?> g</p>
+                <p class="prix-ttc">Prix TTC : <?php formatPrice($produit['price']) ?></p>
+                <p class="ristourne">RISTOURNE : <?php echo $produit['discount'] ?><?php if ($produit['discount'] == null) echo "0" ?> %</p>
+                <p class="prix-ristourne-ttc">Prix TTC après ristourne : <?php formatPrice(discountedPrice($produit['price'], $produit['discount'])) ?></p>
                 <form action="panier.php" method="POST">
                     <div class="select">
                         <label for="quantite">Quantité :</label>

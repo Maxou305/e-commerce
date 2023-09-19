@@ -1,5 +1,18 @@
 <?php
 
+try{
+    $mysqlConnection = new PDO(
+    'mysql:host=localhost;
+    dbname=ma_table;
+    charset=utf8',
+    'lpzkjdoi',
+    'Mc110692'
+    );
+}
+catch (Exception $e){
+    die('Erreur : ' . $e->getMessage());
+}
+
 // function formatPrice($prix) {
 //     $format = numfmt_create('fr_FR', NumberFormatter::CURRENCY);
 //     echo numfmt_format_currency($format, $prix, "EUR");
@@ -64,55 +77,17 @@ function calculFraisPort($cart, $choix_transporteur)
     }
 };
 
-function getProducts()
+function getProducts($mysqlConnection)
 {
-    return [
-        [
-            "id" => 1,
-            "nom" => "Vélo",
-            "prix" => 1500,
-            "poids" => 5500,
-            "ristourne" => 10,
-            "photo" => "images/velo.jpg",
-        ],
-        [
-            "id" => 2,
-            "nom" => "Trottinette",
-            "prix" => 300,
-            "poids" => 2500,
-            "ristourne" => null,
-            "photo" => "images/trottinette.jpg"
-        ],
-        [
-            "id" => 3,
-            "nom" => "Scooter",
-            "prix" => 3000,
-            "poids" => 50000,
-            "ristourne" => 10,
-            "photo" => "images/scooter.jpg"
-        ],
-        [
-            "id" => 4,
-            "nom" => "Draisienne",
-            "prix" => 35,
-            "poids" => 1000,
-            "ristourne" => null,
-            "photo" => "images/draisienne.jpg"
-        ],
-        [
-            "id" => 5,
-            "nom" => "Moto",
-            "prix" => 15000,
-            "poids" => 150000,
-            "ristourne" => 5,
-            "photo" => "images/moto.jpg",
-        ],
-    ];
+    $tableStatement = $mysqlConnection->prepare('SELECT * FROM products');
+    $tableStatement->execute();
+    $table = $tableStatement->fetchAll();
+    return $table;
 }
 
-function getProduct($id)
+function getProduct($id, $mysqlConnection)
 {
-    $products = getProducts();
+    $products = getProducts($mysqlConnection);
     foreach ($products as $product) {
         if ($product["id"] === $id) {
             return $product;
