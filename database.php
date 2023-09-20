@@ -13,9 +13,6 @@ catch (Exception $e){
     die('Erreur : ' . $e->getMessage());
 }
 
-?>
-
-<?php
 function query1($mysqlConnection){
     $tableStatement = $mysqlConnection->prepare('SELECT * FROM products');
     $tableStatement->execute();
@@ -24,6 +21,8 @@ function query1($mysqlConnection){
         echo "<p>".$products['name']."</p>";
     endforeach;
 }
+
+query1($mysqlConnection);
 
 function query2($mysqlConnection){
     $tableStatement = $mysqlConnection->prepare('SELECT * FROM products WHERE quantity = 0');
@@ -67,4 +66,21 @@ function delProduct($mysqlConnection, $sup){
     $tableStatement->execute();
     echo "<p> Produit supprimé !</p>";
 }
+?>
+
+
+<form action="test.php" method="POST">
+        <label for="update">Nouvelle catégorie :</label>
+        <input type="text" name="update">
+    </div>
+    <input type="submit" name="update">
+</form>
+
+<?php 
+if ($_POST['update']){
+    $tableStatement = $mysqlConnection->prepare("INSERT INTO categories (id, name) VALUES (4, 'cat4')");
+    $tableStatement->execute();
+    echo "<p> Catégorie ajouté !</p>";
+}
+
 ?>

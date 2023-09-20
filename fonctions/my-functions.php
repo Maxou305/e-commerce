@@ -81,8 +81,7 @@ function getProducts($mysqlConnection)
 {
     $tableStatement = $mysqlConnection->prepare('SELECT * FROM products');
     $tableStatement->execute();
-    $table = $tableStatement->fetchAll();
-    return $table;
+    return $tableStatement->fetchAll();
 }
 
 function getProduct($id, $mysqlConnection)
@@ -137,3 +136,42 @@ function getPanier() {
 function emptyCart(){
     session_destroy();
 }
+
+
+
+function displayItem(Item $item){
+      echo '<div class="produit">
+    <img src="' . $item->getImageUrl( ). '" alt="">
+    <div>
+        <h2>' . $item->getName() . '</h2>
+        <p>' . $item->getDescription() . '</p>
+        <p class="poids">Poids : ' . $item->getWheight() . ' g</p>
+        <p class="prix-ttc">Prix TTC : ' . formatPrice($item->getPrice()) . '</p>
+        <p class="ristourne">RISTOURNE : ' . $item->getDiscount() . '</p>
+        <p class="prix-ristourne-ttc">Prix TTC après ristourne : . ' . formatPrice(discountedPrice($item->getPrice(), $item->getDiscount())) . ', ' . $item->getDiscount() . ')) ?></p>
+        <form action="panier.php" method="POST">
+            <div class="select">
+                <label for="quantite">Quantité :</label>
+                <select name="quantite" id="quantite">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <input type="hidden" name="id-panier" value="' . $item->getId() . '">
+            <button class="cta">Commander</button>
+        </form>
+    </div>
+</div>';
+
+}
+
+function displayCatalogue(Catalogue $catalogue){
+    foreach ($catalogue->items as $item){
+        displayItem($item);
+    }
+}
+
