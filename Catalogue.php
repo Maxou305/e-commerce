@@ -1,7 +1,7 @@
 <?php
 
 include_once('fonctions/my-functions.php');
-include_once('./Item.php');
+include_once('Item.php');
 
 
 class Catalogue {

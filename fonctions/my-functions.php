@@ -3,10 +3,10 @@
 try{
     $mysqlConnection = new PDO(
     'mysql:host=localhost;
-    dbname=ma_table;
+    dbname=test;
     charset=utf8',
     'lpzkjdoi',
-    'Mc110692'
+    'mofwi6-jiGjoc-sutjob'
     );
 }
 catch (Exception $e){
@@ -97,7 +97,7 @@ function getProduct($id, $mysqlConnection)
 function ajoutPanier($nom, $quantite, $prix_ristourne, $produit_panier)
 {
     $cart = getPanier();
-    array_push($cart, ["nom" => $nom, "quantite" => $quantite, "poids" => $produit_panier["poids"], "prix_ristourne" => $prix_ristourne]);
+    array_push($cart, ["nom" => $nom, "quantite" => $quantite, "poids" => $produit_panier["weight"], "prix_ristourne" => $prix_ristourne]);
     $_SESSION["cart"] = $cart;
 }
 

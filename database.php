@@ -3,10 +3,10 @@
 try{
     $mysqlConnection = new PDO(
     'mysql:host=localhost;
-    dbname=ma_table;
+    dbname=test;
     charset=utf8',
     'lpzkjdoi',
-    'Mc110692'
+   'mofwi6-jiGjoc-sutjob'
     );
 }
 catch (Exception $e){

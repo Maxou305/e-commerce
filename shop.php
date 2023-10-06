@@ -1,15 +1,15 @@
 <?php
 include('fonctions/my-functions.php');
 include('templates/header.php');
-include_once('./Catalogue.php');
+include_once('Catalogue.php');
 
 try{
     $mysqlConnection = new PDO(
     'mysql:host=localhost;
-    dbname=ma_table;
+    dbname=test;
     charset=utf8',
     'lpzkjdoi',
-    'Mc110692'
+    'mofwi6-jiGjoc-sutjob'
     );
 }
 catch (Exception $e){
@@ -27,3 +27,4 @@ catch (Exception $e){
    ?>
 </div>
 <?php include('templates/footer.php'); ?>
+

@@ -5,12 +5,12 @@ include('templates/header.php');
 // // Traitement de formulaire 
 if (isset($_POST['id-panier'])){
     $product_id  = (int) $_POST['id-panier'];
-    $produit_panier = getProduct($product_id);
+    $produit_panier = getProduct($product_id, $mysqlConnection);
     $quantite = (int)$_POST["quantite"];
-    $prix = $produit_panier['prix'];
-    $ristourne = $produit_panier['ristourne'];
+    $prix = $produit_panier['price'];
+    $ristourne = $produit_panier['discount'];
     $prix_ristourne = discountedPrice($prix, $ristourne);
-    $nom = $produit_panier['nom'];
+    $nom = $produit_panier['name'];
     checkPanier($nom, $quantite, $prix_ristourne, $produit_panier);
 }
 
@@ -65,7 +65,7 @@ if (isset($_POST["vide-panier"])){
                         <?php echo formatPrice($cartItem["prix_ristourne"] * $cartItem["quantite"]) ?>
                     </td>
                 </tr>
-            <?endforeach?>
+            <?php endforeach?>
             <tr>
                 <td> </td>
                 <td> </td>
